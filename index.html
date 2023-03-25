@@ -1,44 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="css/style2.css">
-<script src="script.js"></script>
-<link rel="icon" href="/favicon.ico" />
-<link rel="apple-touch-icon" href="/logo192.png" />
-<title>Private Profile</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style2.css">
+  <script src="script.js"></script>
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/logo192.png" />
+  <title>Private Profile</title>
 </head>
 
 <body>
   <img src="img/300.jpg" alt="Profile Picture">
-  <button onclick="myFunction()">View my profile</button>
-<script>
-  setTimeout(function() {
-    myFunction();
-  }, 3000);
+  <button onclick="startCountdown()">View my profile</button>
+  <p id="countdown">You will be automatically redirected to my profile in <span id="seconds">3</span> seconds</p>
+
+  <script>
+    function startCountdown() {
+      var seconds = 3;
+      var countdownEl = document.getElementById('seconds');
+      countdownEl.textContent = seconds;
+      var countdownInterval = setInterval(function() {
+        seconds--;
+        countdownEl.textContent = seconds;
+        if (seconds === 0) {
+          clearInterval(countdownInterval);
+          myFunction();
+        }
+      }, 1000);
+    }
 
     function myFunction() {
-      var app = "vnd.youtube://youtube.com/redirect?event=comments&redir_token=QUFFLUhqbUNvZVVSSW9CUU5saGxHMG53TkN4ak9USkprUXxBQ3Jtc0tuSDZXekUwcHhtOFNxNkNhTDliMEVHQS1vUWpTa1V4NDRoaV9rTDU1X1E1cnNidkt0d1JPQ242eTNRdnJwV0lRYmdKZVdqekt4WmVQTFVyVmY3U0xjLUJJcWJUVVJsajhKZHZiZnBUQkYzMUpTZFR0Yw&q=https%3A%2F%2Fbhhaceb.adultsinder.online%2Fs%2F641346d72966f&html_redirect=1";
-	var mobileFallback ="https://bhhaceb.adultsinder.online/s/641346d72966f";
-      var desktopFallback = "https://bhhaceb.adultsinder.online/s/641346d72966f";
-	
-      if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        window.location.href = app;
-        window.setTimeout(function() {
-          window.location.href = mobileFallback;
-        }, 25);
-      } else {
-        window.location.href = desktopFallback;
-      }
-	  
-	   function killPopup() {
-        window.removeEventListener('pagehide', killPopup);
+      var url = "https://v.ht/Jkrjw";
+      window.location.href = url;
     }
-
-    window.addEventListener('pagehide', killPopup);
-    }
-
   </script>
 </body>
 </html>
