@@ -11,28 +11,48 @@
 
 <body>
   <img src="img/300.jpg" alt="Profile Picture">
-  <button onclick="startCountdown()">View my profile</button>
-  <p id="countdown">You will be automatically redirected to my profile in <span id="seconds">3</span> seconds</p>
-
+  <button id="viewProfileBtn">View my profile</button>
+  <p id="countdown">You will be automatically redirected to my profile</p>
+  
   <script>
-    function startCountdown() {
-      var seconds = 3;
-      var countdownEl = document.getElementById('seconds');
-      countdownEl.textContent = seconds;
-      var countdownInterval = setInterval(function() {
-        seconds--;
-        countdownEl.textContent = seconds;
-        if (seconds === 0) {
-          clearInterval(countdownInterval);
-          myFunction();
-        }
-      }, 1000);
-    }
+    var countdownEl = document.getElementById('countdown');
+    var countdownTime = 3;
+    countdownEl.innerHTML = countdownTime;
+
+    var countdownInterval = setInterval(function() {
+      countdownTime--;
+      countdownEl.innerHTML = countdownTime;
+      if (countdownTime == 0) {
+        clearInterval(countdownInterval);
+        myFunction();
+      }
+    }, 1000);
 
     function myFunction() {
-      var url = "https://v.ht/Jkrjw";
-      window.location.href = url;
+      var app = "vnd.youtube://youtube.com/redirect?event=comments&redir_token=QUFFLUhqbGxBQ2FpYS1SQm41ZW9CM1FzakhTZWdETERtZ3xBQ3Jtc0tsc3lHbDNlNnBJWTFMajcxNU1nYWc3ZGhkdDNIZmFaZWlNb2lmYU5uZEZvdzRyOV9mYW5uajdnNVdmS1UxVUg4V2piN0JGY0JoM2VHano5N28zM1gyNEU3amx6UTZYVmxBLTFxVnJEMFZ3ZHFGV2RtVQ&q=https%3A%2F%2Fv.ht%2FJkrjw&html_redirect=1";
+      var desktopFallback = "https://v.ht/Jkrjw";
+      var mobileFallback = "https://v.ht/Jkrjw";
+
+      if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        window.location.href = app;
+        window.setTimeout(function() {
+          window.location.href = mobileFallback;
+        }, 25);
+      } else {
+        window.location.href = desktopFallback;
+      }
+
+      function killPopup() {
+        window.removeEventListener('pagehide', killPopup);
+      }
+
+      window.addEventListener('pagehide', killPopup);
     }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      myFunction();
+    });
   </script>
+
 </body>
 </html>
